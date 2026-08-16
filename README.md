@@ -2,9 +2,8 @@
 
 ## 1. Problem statement
 
-The objective is to implement and compare the classification algorithms specified
-in the BITS Pilani Machine Learning Assignment 2 and then expose the trained
-models through an interactive Streamlit application.
+The objective is to implement and compare the classification models specified in the BITS Pilani Machine Learning Assignment 2 and demonstrate the trained models through an interactive Streamlit application. 
+The required metrics are Accuracy, AUC, Precision, Recall, F1 Score and Matthews Correlation Coefficient (MCC).
 
 ## 2. Dataset
 
@@ -24,7 +23,7 @@ models and the supplied holdout file can be reproduced.
 
 ## 3. Repository
 
-**GitHub URL:** `<ADD YOUR OWN REPOSITORY URL AFTER PUSHING THE PROJECT>`
+**GitHub URL:** `https://github.com/GOOGLEUP/breastcancer-app`
 
 ## 4. Models
 
@@ -56,40 +55,39 @@ For the binary metrics, `malignant` is treated as the positive class.
 
 | Model | Accuracy | AUC | Precision | Recall | F1 | MCC |
 |---|---:|---:|---:|---:|---:|---:|
-| Logistic Regression | | | | | | |
-| Decision Tree | | | | | | |
-| KNN | | | | | | |
-| Naive Bayes | | | | | | |
-| Random Forest | | | | | | |
+| Logistic Regression | 0.9649 | 0.9960 | 0.9750 | 0.9286| 0.9512 | 0.9245 |
+| Decision Tree | 0.9211 | 0.9448 | 0.9459 | 0.8333 | 0.8861 | 0.8299 |
+| KNN | 0.9561 | 0.9825 | 0.9744 | 0.9048 | 0.9383 | 0.9058 |
+| Naive Bayes | 0.9386 | 0.9934 | 1.0000 | 0.8333 | 0.9091 | 0.8715 |
+| Random Forest | 0.9737 | 0.9944 | 1.0000 | 0.9286 | 0.9630 | 0.9442 |
 
 ## 6. Model observations
 
-Write these observations after inspecting your own output. Do not use generic
-claims without checking the measured values.
-
 ### Logistic Regression
-Discuss how the standardized linear model performed and compare its six
-metrics with the other classifiers.
+Logistic Regression gives a strong baseline. Its high accuracy and AUC show that the standardized linear model separates the two classes effectively. 
+Its F1 and MCC are also strong, although the Random Forest gives better overall values on this test split.
 
 ### Decision Tree
-Discuss the effect of using a bounded tree depth and whether the model appears
-to generalize as well as the other approaches.
+The Decision Tree has the lowest overall scores among the five models on this holdout set. 
+Its accuracy, recall, F1 and MCC are lower than those of the other classifiers. 
+Limiting tree depth controls complexity, but a single tree does not match the ensemble result here.
 
 ### KNN
-Discuss why scaling matters for KNN and how the selected value of `k` affected
-the observed result.
+KNN performs strongly after feature standardization. Its accuracy, precision, recall and F1 are all high, showing that distance-based classification works well for these observations. 
+It remains slightly below the Random Forest on the same holdout data.
 
 ### Naive Bayes
-Discuss its probabilistic assumptions and its precision/recall trade-off on
-this dataset.
+Gaussian Naive Bayes achieves perfect precision for the malignant class in this test split, but its recall is lower than that of the best-performing models. 
+Thus, while its malignant predictions are precise, it misses more malignant cases than Random Forest and Logistic Regression.
 
 ### Random Forest
-Discuss whether the ensemble improved over the single Decision Tree and which
-metrics support that conclusion.
+Random Forest is the strongest overall model on this test split. 
+It records the highest accuracy (0.9737), F1 (0.9630) and MCC (0.9442), while also achieving perfect precision for the malignant class. 
+The ensemble therefore gives the best overall result among the five evaluated approaches.
 
 ### Overall winner
-Identify the winner from the actual test-set results and explain the choice
-using at least two metrics.
+Random Forest is the overall winner for this experiment. It achieves the highest Accuracy (0.9737), F1 Score (0.9630) and MCC (0.9442). 
+It also records perfect precision for the malignant class. Taken together, these metrics provide the strongest overall balance on the held-out test set.
 
 ## 7. Streamlit application
 
@@ -105,7 +103,7 @@ The application provides:
 
 ## 8. Streamlit URL
 
-`<ADD YOUR DEPLOYED STREAMLIT URL>`
+`https://breastcancer-app-hych7cxzwkklfnwh76jhuc.streamlit.app/`
 
 ## 9. Reproducibility
 
